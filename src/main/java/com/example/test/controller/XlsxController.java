@@ -50,10 +50,10 @@ public class XlsxController {
     )
     @GetMapping("/nth-min")
     public int getNthSmallest(
-            @Parameter(description = "Путь к локальному XLSX файлу (например: /tmp/numbers.xlsx)", required = true, example = "/tmp/numbers.xlsx")
+            @Parameter(description = "Путь к локальному XLSX файлу", required = true, example = "/tmp/numbers.xlsx")
             @RequestParam String filePath,
 
-            @Parameter(description = "Номер минимального числа (1 — самое маленькое, 2 — второе по величине и т.д.)", required = true, example = "2")
+            @Parameter(description = "Номер минимального числа", required = true, example = "2")
             @RequestParam int n)
             throws IOException {
         var numbers = fileProcessorService.readNumbersFromXlsx(filePath);
@@ -63,3 +63,4 @@ public class XlsxController {
         return nthMinService.findNthSmallest(numbers, n);
     }
 }
+
